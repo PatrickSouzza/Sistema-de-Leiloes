@@ -14,7 +14,7 @@ public class Produto {
 
     private String tipo;
     private String nicho;
-    //private Leilao leilao; colocar depois de criar a classe
+    //private Leilao leilao;
     private double preco;
 
     // Getters e Setters
