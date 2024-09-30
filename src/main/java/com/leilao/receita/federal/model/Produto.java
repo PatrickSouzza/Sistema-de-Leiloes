@@ -6,6 +6,8 @@ import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Produto {
 
@@ -25,6 +27,7 @@ public class Produto {
     private double lanceInicial;
     @Schema(hidden = true)
     private StatusDoProduto statusDoProduto;
+
     // Getters e Setters
 
     public Long getId() {
@@ -82,4 +85,5 @@ public class Produto {
     public void setStatusDoProduto(StatusDoProduto statusDoProduto) {
         this.statusDoProduto = statusDoProduto;
     }
+
 }
