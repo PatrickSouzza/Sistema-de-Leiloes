@@ -1,22 +1,30 @@
 package com.leilao.receita.federal.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.leilao.receita.federal.enums.StatusDoProduto;
+import com.leilao.receita.federal.enums.TipoProduto;
+import io.swagger.v3.oas.annotations.Hidden;
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.*;
 
 @Entity
 public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Schema(hidden = true)
     private Long id;
-
-    private String tipo;
-    private String nicho;
-    //private Leilao leilao;
-    private double preco;
-
+    @Schema(example = "Notebook ACER")
+    private String nomeProduto;
+    @Schema(example = "Informatica")
+    private TipoProduto tipoProduto;
+    @Schema(example = "Notebook I5 com uma rtx2060")
+    private String descricao;
+    @Column(name = "leilao_id", nullable = false)
+    private Long leilaoId;
+    @Schema(example = "50.00")
+    private double lanceInicial;
+    @Schema(hidden = true)
+    private StatusDoProduto statusDoProduto;
     // Getters e Setters
 
     public Long getId() {
@@ -27,27 +35,51 @@ public class Produto {
         this.id = id;
     }
 
-    public String getTipo() {
-        return tipo;
+    public double getLanceInicial() {
+        return lanceInicial;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setLanceInicial(double lanceInicial) {
+        this.lanceInicial = lanceInicial;
     }
 
-    public double getPreco() {
-        return preco;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setPreco(double preco) {
-        this.preco = preco;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
-    public String getNicho() {
-        return nicho;
+    public Long getLeilaoId() {
+        return leilaoId;
     }
 
-    public void setNicho(String nicho) {
-        this.nicho = nicho;
+    public void setLeilaoId(Long leilaoId) {
+        this.leilaoId = leilaoId;
+    }
+
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public StatusDoProduto getStatusDoProduto() {
+        return statusDoProduto;
+    }
+
+    public void setStatusDoProduto(StatusDoProduto statusDoProduto) {
+        this.statusDoProduto = statusDoProduto;
     }
 }

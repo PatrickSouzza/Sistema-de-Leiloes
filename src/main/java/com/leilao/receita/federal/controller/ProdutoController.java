@@ -1,5 +1,6 @@
 package com.leilao.receita.federal.controller;
 
+import com.leilao.receita.federal.enums.StatusDoProduto;
 import com.leilao.receita.federal.model.Produto;
 import com.leilao.receita.federal.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +31,7 @@ public class ProdutoController {
 
     @PostMapping
     public ResponseEntity<Produto> createProduto(@RequestBody Produto produto) {
+        produto.setStatusDoProduto(StatusDoProduto.Disponivel);
         Produto savedProduto = produtoService.createProduto(produto);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedProduto);
     }

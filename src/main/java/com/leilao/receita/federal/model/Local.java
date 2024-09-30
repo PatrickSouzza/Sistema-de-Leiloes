@@ -1,13 +1,17 @@
 package com.leilao.receita.federal.model;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Local {
-
+    @Schema(example = "69")
     private Integer numero;
+    @Schema(example = "Rua dos Encanadores")
     private String rua;
+    @Schema(example = "São José dos Campos")
     private String cidade;
+    @Schema(example = "SP")
     private String estado;
 
     // Getters e Setters
