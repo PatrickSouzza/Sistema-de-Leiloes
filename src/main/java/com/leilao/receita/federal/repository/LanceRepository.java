@@ -10,7 +10,4 @@ import java.util.List;
 public interface LanceRepository extends JpaRepository<Lance, Long> {
     List<Lance> findByUsuarioId(Long usuarioId);
     List<Lance> findByProdutoId(Long produtoId);
-
-
-
 }

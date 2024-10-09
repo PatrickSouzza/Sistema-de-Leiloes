@@ -28,7 +28,6 @@ public class Produto {
     @Schema(hidden = true)
     private StatusDoProduto statusDoProduto;
 
-    // Getters e Setters
 
     public Long getId() {
         return id;

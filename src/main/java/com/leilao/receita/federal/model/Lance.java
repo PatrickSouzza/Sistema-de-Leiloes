@@ -1,5 +1,6 @@
 package com.leilao.receita.federal.model;
 
+import com.leilao.receita.federal.enums.TipoProduto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -25,7 +26,15 @@ public class Lance {
     @Schema(description = "Data e hora do lance", example = "2024-10-10T18:00:00Z")
     private Date dataLance;
 
-    // Getters e Setters
+    @Transient
+    private String nomeProduto;
+
+    @Transient
+    private TipoProduto tipoProduto;
+
+    @Transient
+    private String descricaoProduto;
+
 
     public Long getId() {
         return id;
@@ -65,5 +74,29 @@ public class Lance {
 
     public void setProdutoId(Long produtoId) {
         this.produtoId = produtoId;
+    }
+
+    public String getNomeProduto() {
+        return nomeProduto;
+    }
+
+    public void setNomeProduto(String nomeProduto) {
+        this.nomeProduto = nomeProduto;
+    }
+
+    public String getDescricaoProduto() {
+        return descricaoProduto;
+    }
+
+    public void setDescricaoProduto(String descricaoProduto) {
+        this.descricaoProduto = descricaoProduto;
+    }
+
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
     }
 }

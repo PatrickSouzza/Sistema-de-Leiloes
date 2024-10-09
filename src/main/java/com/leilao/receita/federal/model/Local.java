@@ -14,7 +14,6 @@ public class Local {
     @Schema(example = "SP")
     private String estado;
 
-    // Getters e Setters
 
     public Integer getNumero() {
         return numero;
