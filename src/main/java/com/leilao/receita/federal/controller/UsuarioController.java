@@ -1,8 +1,6 @@
 package com.leilao.receita.federal.controller;
 
-import com.leilao.receita.federal.enums.StatusDoProduto;
 import com.leilao.receita.federal.model.Lance;
-import com.leilao.receita.federal.model.Produto;
 import com.leilao.receita.federal.model.Usuario;
 import com.leilao.receita.federal.service.LanceService;
 import com.leilao.receita.federal.service.UsuarioService;
@@ -23,15 +21,20 @@ public class UsuarioController {
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/{usuarioId}/lances")
+    @GetMapping("/{id}/lances")
     public List<Lance> getLancesByUsuarioId(@PathVariable Long usuarioId) {
         return lanceService.getLancesByUsuarioId(usuarioId);
     }
 
-    @GetMapping("/{usuarioId}")
+    @GetMapping("/{id}")
     public ResponseEntity<Usuario> getUsuarioById(@PathVariable Long id) {
         Optional<Usuario> usuario = usuarioService.getById(id);
         return usuario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
+    @GetMapping
+    public List<Usuario> getAllUsuarios() {
+        return usuarioService.getAllUsuarios();
     }
 
     @PostMapping

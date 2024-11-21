@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Leilao {
@@ -13,19 +14,24 @@ public class Leilao {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Schema(description = "ID do leilão", example = "1")
+    @Column(name = "leilao_id")
     private Long id;
     @Schema(description = "Nome do leilão", example = "Leilão de Eletrônicos")
     private String nome;
-    @Schema(description = "Entidade responsável pelo leilão", example = "Receita Federal")
-    private String entidade;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "leilao_entidade",
+            joinColumns = @JoinColumn(name = "leilao_id"),
+            inverseJoinColumns = @JoinColumn(name = "entidade_id")
+    )
+    private Set<EntidadeFinanceira> entidadesFinanceiras;
+
     @Schema(description = "Data de início do leilão", example = "2024-10-01T10:00:00Z")
     private Date dataInicio;
     @Schema(description = "Data de fim do leilão", example = "2024-10-10T18:00:00Z")
     private Date dataFim;
     @Schema(hidden = true)
     private EstadoDoLeilao estadoDoLeilao;
-    @Schema(description = "Lista de IDs dos produtos a serem leiloados", example = "[1, 2, 3]")
-    private List<Long> produtosId;
     @Embedded
     @Schema(description = "Local onde o leilão será realizado")
     private Local local;
@@ -70,14 +76,6 @@ public class Leilao {
         this.local = local;
     }
 
-    public String getEntidade() {
-        return entidade;
-    }
-
-    public void setEntidade(String entidade) {
-        this.entidade = entidade;
-    }
-
     public EstadoDoLeilao getEstadoDoLeilao() {
         return estadoDoLeilao;
     }
@@ -86,12 +84,12 @@ public class Leilao {
         this.estadoDoLeilao = estadoDoLeilao;
     }
 
-    public List<Long> getProdutosId() {
-        return produtosId;
+    public Set<EntidadeFinanceira> getEntidadesFinanceiras() {
+        return entidadesFinanceiras;
     }
 
-    public void setProdutosId(List<Long> produtosId) {
-        this.produtosId = produtosId;
+    public void setEntidadesFinanceiras(Set<EntidadeFinanceira> entidadesFinanceiras) {
+        this.entidadesFinanceiras = entidadesFinanceiras;
     }
 }
 

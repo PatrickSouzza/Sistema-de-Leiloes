@@ -1,6 +1,5 @@
 package com.leilao.receita.federal.model;
 
-import com.leilao.receita.federal.enums.TipoProduto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
@@ -19,18 +18,15 @@ public class Lance {
     @Column(name = "usuario_id", nullable = false)
     private Long usuarioId;
 
-    @Schema(description = "Valor do lance", example = "99.0")
+    @Schema
     private BigDecimal valorDoLance;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Schema(description = "Data e hora do lance", example = "2024-10-10T18:00:00Z")
+    @Schema
     private Date dataLance;
 
     @Transient
     private String nomeProduto;
-
-    @Transient
-    private TipoProduto tipoProduto;
 
     @Transient
     private String descricaoProduto;
@@ -92,11 +88,4 @@ public class Lance {
         this.descricaoProduto = descricaoProduto;
     }
 
-    public TipoProduto getTipoProduto() {
-        return tipoProduto;
-    }
-
-    public void setTipoProduto(TipoProduto tipoProduto) {
-        this.tipoProduto = tipoProduto;
-    }
 }

@@ -5,6 +5,7 @@ import com.leilao.receita.federal.repository.LeilaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,6 +14,14 @@ public class LeilaoService {
 
     @Autowired
     private LeilaoRepository leilaoRepository;
+
+    public List<Leilao> getAllLeiloesOrdered(boolean ascending) {
+        if (ascending) {
+            return leilaoRepository.findAllByOrderByDataInicioAsc();
+        } else {
+            return leilaoRepository.findAllByOrderByDataInicioDesc();
+        }
+    }
 
     public List<Leilao> findAll() {
         return leilaoRepository.findAll();

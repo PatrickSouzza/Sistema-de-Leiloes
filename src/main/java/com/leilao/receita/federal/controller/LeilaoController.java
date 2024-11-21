@@ -4,9 +4,11 @@ import com.leilao.receita.federal.enums.EstadoDoLeilao;
 import com.leilao.receita.federal.model.Leilao;
 import com.leilao.receita.federal.service.LeilaoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,13 @@ public class LeilaoController {
 
     @Autowired
     private LeilaoService leilaoService;
+
+    @GetMapping("/orderByDate")
+    public ResponseEntity<List<Leilao>> listarLeiloesOrdenados(
+            @RequestParam(defaultValue = "true") boolean ascending) {
+        List<Leilao> leiloes = leilaoService.getAllLeiloesOrdered(ascending);
+        return ResponseEntity.ok(leiloes);
+    }
 
     @GetMapping
     public List<Leilao> getAllLeiloes() {

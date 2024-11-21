@@ -1,7 +1,6 @@
 package com.leilao.receita.federal.service;
 
 import com.leilao.receita.federal.model.EntidadeFinanceira;
-import com.leilao.receita.federal.model.Produto;
 import com.leilao.receita.federal.repository.EntidadeFinanceiraRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

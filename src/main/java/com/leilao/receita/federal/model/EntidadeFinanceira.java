@@ -8,6 +8,7 @@ public class EntidadeFinanceira {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "entidade_id")
     private Long id;
 
     @Schema(example = "Banco do Brasil")
