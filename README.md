@@ -286,7 +286,7 @@ mvn clean
 
 -------------------------------------------------------------------------
 
-# REST - DISPOSITIVOS
+# Dispositivos de informatica
 ### Listar todos os dispositivos
 * ## <span style="color: BLUE;">GET</span>
 
@@ -295,14 +295,14 @@ mvn clean
 -------------------------------------------------------------------------
 
 
-### Listar dispositivos por ID
+### Listar dispositivos de informatica por ID
 * ## <span style="color: BLUE;">GET</span>
 
 ### Endpoint: `localhost:8080/informatica/{id}`
 
 -------------------------------------------------------------------------
 
-### Criar um novo dispositivo
+### Criar um novo dispositivos de informatica
 * ## <span style="color: GREEN;">POST</span>
 ### Endpoint: `localhost:8080/informatica`
 ```json
@@ -318,7 +318,7 @@ mvn clean
 ```
 -------------------------------------------------------------------------
 
-### Atualizar dispositivos
+### Atualizar dispositivos de informatica
 * ## <span style="color: yellow;">PUT</span>
 ### Endpoint: `localhost:8080/informatica/{id}`
 ```json
@@ -334,7 +334,7 @@ mvn clean
 ```
 -------------------------------------------------------------------------
 
-### Deletar dispositivos
+### Deletar dispositivos de informatica
 * ## <span style="color: RED;">DELETE</span>
 ### Endpoint: `localhost:8080/informatica/{id}`
 
