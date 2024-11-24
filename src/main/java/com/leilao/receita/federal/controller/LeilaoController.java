@@ -2,6 +2,7 @@ package com.leilao.receita.federal.controller;
 
 import com.leilao.receita.federal.enums.EstadoDoLeilao;
 import com.leilao.receita.federal.model.Leilao;
+import com.leilao.receita.federal.model.ProdutosPorLeilao;
 import com.leilao.receita.federal.service.LeilaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,6 +19,14 @@ public class LeilaoController {
 
     @Autowired
     private LeilaoService leilaoService;
+
+    @GetMapping("/{leilaoId}/produtos")
+    public ResponseEntity<ProdutosPorLeilao> getProdutosPorLeilao(@PathVariable Long leilaoId) {
+        ProdutosPorLeilao response = leilaoService.getProdutosPorLeilao(leilaoId);
+        return (response.getVeiculos().isEmpty() && response.getInformatica().isEmpty())
+                ? ResponseEntity.noContent().build()
+                : ResponseEntity.ok(response);
+    }
 
     @GetMapping("/orderByDate")
     public ResponseEntity<List<Leilao>> listarLeiloesOrdenados(
