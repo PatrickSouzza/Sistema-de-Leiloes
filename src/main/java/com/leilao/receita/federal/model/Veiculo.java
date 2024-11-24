@@ -1,5 +1,6 @@
 package com.leilao.receita.federal.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.leilao.receita.federal.enums.StatusDoProduto;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -45,7 +46,14 @@ public class Veiculo {
 
     @ManyToOne
     @JoinColumn(name = "leilao_id", nullable = false)
+    @JsonBackReference
     private Leilao leilao;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id")
+    private Usuario ganhador;
+
+    private Double lanceVencedor;
 //////////////////////////////////////////////////////////////
     public Long getId() {
         return id;
@@ -141,5 +149,21 @@ public class Veiculo {
 
     public void setLeilao(Leilao leilao) {
         this.leilao = leilao;
+    }
+
+    public Usuario getGanhador() {
+        return ganhador;
+    }
+
+    public void setGanhador(Usuario ganhador) {
+        this.ganhador = ganhador;
+    }
+
+    public Double getLanceVencedor() {
+        return lanceVencedor;
+    }
+
+    public void setLanceVencedor(Double lanceVencedor) {
+        this.lanceVencedor = lanceVencedor;
     }
 }

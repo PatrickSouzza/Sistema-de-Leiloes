@@ -16,6 +16,11 @@ public class EntidadeFinanceira {
     @Schema(example = "00.000.000/0001-91")
     private String cnpj;
 
+    @ManyToOne
+    @Schema(hidden = true)
+    @JoinColumn(name = "leilao_id")
+    private Leilao leilao;
+
     public String getNomeEntidade() {
         return nomeEntidade;
     }
@@ -38,5 +43,13 @@ public class EntidadeFinanceira {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Leilao getLeilao() {
+        return leilao;
+    }
+
+    public void setLeilao(Leilao leilao) {
+        this.leilao = leilao;
     }
 }

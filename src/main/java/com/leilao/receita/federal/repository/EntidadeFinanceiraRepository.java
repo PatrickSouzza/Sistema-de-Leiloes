@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface EntidadeFinanceiraRepository extends JpaRepository<EntidadeFinanceira, Long> {
 
+    List<EntidadeFinanceira> findByLeilaoId(Long leilaoId);
 }

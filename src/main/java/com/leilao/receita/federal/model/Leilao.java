@@ -1,5 +1,6 @@
 package com.leilao.receita.federal.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.leilao.receita.federal.enums.EstadoDoLeilao;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
@@ -30,8 +31,17 @@ public class Leilao {
     private Date dataInicio;
     @Schema(description = "Data de fim do leilão", example = "2024-10-10T18:00:00Z")
     private Date dataFim;
-    @Schema(hidden = true)
+    @Schema
     private EstadoDoLeilao estadoDoLeilao;
+
+    @OneToMany(mappedBy = "leilao")
+    @JsonManagedReference
+    private List<Veiculo> veiculos;
+
+    @OneToMany(mappedBy = "leilao")
+    @JsonManagedReference
+    private List<Informatica> informaticas;
+
     @Embedded
     @Schema(description = "Local onde o leilão será realizado")
     private Local local;
@@ -90,6 +100,22 @@ public class Leilao {
 
     public void setEntidadesFinanceiras(Set<EntidadeFinanceira> entidadesFinanceiras) {
         this.entidadesFinanceiras = entidadesFinanceiras;
+    }
+
+    public List<Veiculo> getVeiculos() {
+        return veiculos;
+    }
+
+    public void setVeiculos(List<Veiculo> veiculos) {
+        this.veiculos = veiculos;
+    }
+
+    public List<Informatica> getInformaticas() {
+        return informaticas;
+    }
+
+    public void setInformaticas(List<Informatica> informaticas) {
+        this.informaticas = informaticas;
     }
 }
 

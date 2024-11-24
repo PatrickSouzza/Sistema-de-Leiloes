@@ -161,7 +161,7 @@ mvn clean
     {"id": 1}
   ],
   "dataInicio": "2024-10-01T10:00:00Z",
-  "dataFim": "2024-10-10T18:00:00Z",
+  "dataFim": "2027-10-10T18:00:00Z",
   "local": {
     "numero": 69,
     "rua": "Rua dos Encanadores",
@@ -185,7 +185,7 @@ mvn clean
     {"id": 1}
   ],
   "dataInicio": "2024-10-01T10:00:00Z",
-  "dataFim": "2024-10-10T18:00:00Z",
+  "dataFim": "2027-10-10T18:00:00Z",
   "local": {
     "numero": 15,
     "rua": "Rua dos Encanadores",
@@ -349,3 +349,73 @@ mvn clean
   "id": 2
 }
 ```
+
+-------------------------------------------------------------------------
+
+### Novo Lance
+
+* ## <span style="color: GREEN;">POST</span>
+### Endpoint: `localhost:8080/lances`
+```json
+{
+  "usuario": {
+    "id": 1
+  },
+  "veiculo": {
+    "id": 1
+  },
+  "valor": 31000.00
+}
+```
+
+```json
+{
+  "usuario": {
+    "id": 1
+  },
+  "informatica": {
+    "id": 1
+  },
+  "valor": 5000.00
+}
+
+```
+# Metodos de busca
+
+* ## <span style="color: blue;">GET</span>
+
+### Lances de um usuário
+### Endpoint: `localhost:8080/usuario/{id}/lances` 
+
+------------------------------------------------------------------
+### Todos produtos de um leilão e total de produtos
+### Endpoint: `localhost:8080/leilao/{leilaoId}/produtos` 
+
+-----------------------------------------------------------------
+### Todos detalhes de um leilão
+### Endpoint: `localhost:8080/leilao/{id}/detalhes`
+
+-----------------------------------------------------------------
+### Filtro de veiculos o lance inicial (min < R$ < max), palavras chave
+### Endpoint: `localhost:8080/leilao/veiculos`
+
+-----------------------------------------------------------------
+### Filtro de informatica o lance inicial (min < R$ < max), palavras chave
+### Endpoint: `localhost:8080/leilao/informaticas` 
+
+-----------------------------------------------------------------
+
+### Todos os lances de um veiculo
+### Endpoint: `localhost:8080/lances/veiculo/{veiculoId}`
+
+-----------------------------------------------------------------
+### Todos os lances de um dispositivo de informatica
+### Endpoint: `localhost:8080/lances/informatica/{informaticaId}`
+
+-----------------------------------------------------------------
+
+# Exportar para .DET
+### Endpoint: `localhost:8080/leilao/{leilaoId}/exportar`
+
+
+

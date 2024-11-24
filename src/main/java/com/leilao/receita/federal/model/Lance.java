@@ -1,36 +1,31 @@
 package com.leilao.receita.federal.model;
 
-import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
-import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Lance {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "produto_id", nullable = false)
-    private Long produtoId;
+    @ManyToOne
+    private Usuario usuario;
 
-    @Column(name = "usuario_id", nullable = false)
-    private Long usuarioId;
+    private Double valor;
 
-    @Schema
-    private BigDecimal valorDoLance;
+    @ManyToOne
+    @JoinColumn(name = "veiculo_id")
+    private Veiculo veiculo;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Schema
-    private Date dataLance;
+    @ManyToOne
+    @JoinColumn(name = "informatica_id")
+    private Informatica informatica;
 
-    @Transient
-    private String nomeProduto;
-
-    @Transient
-    private String descricaoProduto;
-
+    @Column
+    private LocalDateTime dataHora;
 
     public Long getId() {
         return id;
@@ -40,52 +35,43 @@ public class Lance {
         this.id = id;
     }
 
-    public BigDecimal getValorDoLance() {
-        return valorDoLance;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setValorDoLance(BigDecimal valorDoLance) {
-        this.valorDoLance = valorDoLance;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
-    public Date getDataLance() {
-        return dataLance;
+    public Double getValor() {
+        return valor;
     }
 
-    public void setDataLance(Date dataLance) {
-        this.dataLance = dataLance;
+    public void setValor(Double valor) {
+        this.valor = valor;
     }
 
-    public Long getUsuarioId() {
-        return usuarioId;
+    public Veiculo getVeiculo() {
+        return veiculo;
     }
 
-    public void setUsuarioId(Long usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setVeiculo(Veiculo veiculo) {
+        this.veiculo = veiculo;
     }
 
-    public Long getProdutoId() {
-        return produtoId;
+    public Informatica getInformatica() {
+        return informatica;
     }
 
-    public void setProdutoId(Long produtoId) {
-        this.produtoId = produtoId;
+    public void setInformatica(Informatica informatica) {
+        this.informatica = informatica;
     }
 
-    public String getNomeProduto() {
-        return nomeProduto;
+    public LocalDateTime getDataHora() {
+        return dataHora;
     }
 
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
+    public void setDataHora(LocalDateTime dataHora) {
+        this.dataHora = dataHora;
     }
-
-    public String getDescricaoProduto() {
-        return descricaoProduto;
-    }
-
-    public void setDescricaoProduto(String descricaoProduto) {
-        this.descricaoProduto = descricaoProduto;
-    }
-
 }

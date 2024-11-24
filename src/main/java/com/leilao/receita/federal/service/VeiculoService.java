@@ -54,7 +54,7 @@ public class VeiculoService {
 
         Veiculo veiculo = optionalVeiculo.get();
         veiculo.setLeilao(leilao);
-        return veiculoRepository.save(veiculo); // Salva e retorna o veículo atualizado
+        return veiculoRepository.save(veiculo);
     }
 }
 

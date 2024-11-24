@@ -1,7 +1,10 @@
 package com.leilao.receita.federal.service;
 
 import com.leilao.receita.federal.model.EntidadeFinanceira;
+import com.leilao.receita.federal.model.Leilao;
 import com.leilao.receita.federal.repository.EntidadeFinanceiraRepository;
+import com.leilao.receita.federal.repository.LeilaoRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +16,9 @@ public class EntidadeService {
 
     @Autowired
     private EntidadeFinanceiraRepository entidadeRepository;
+
+    @Autowired
+    private LeilaoRepository leilaoRepository;
 
     public List<EntidadeFinanceira> getAllEntidades() {
         return entidadeRepository.findAll();
@@ -41,5 +47,14 @@ public class EntidadeService {
         }
         entidadeRepository.deleteById(id);
         return true;
+    }
+
+    @Transactional
+    public EntidadeFinanceira saveEntidadeFinanceira(EntidadeFinanceira entidadeFinanceira, Long leilaoId) {
+        Leilao leilao = leilaoRepository.findById(leilaoId)
+                .orElseThrow(() -> new IllegalArgumentException("Leilão não encontrado"));
+
+        entidadeFinanceira.setLeilao(leilao);
+        return entidadeRepository.save(entidadeFinanceira);
     }
 }
