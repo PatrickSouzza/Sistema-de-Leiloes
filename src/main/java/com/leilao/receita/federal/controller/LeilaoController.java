@@ -1,7 +1,6 @@
 package com.leilao.receita.federal.controller;
 
 import com.leilao.receita.federal.enums.EstadoDoLeilao;
-import com.leilao.receita.federal.enums.TipoProduto;
 import com.leilao.receita.federal.model.Informatica;
 import com.leilao.receita.federal.model.Leilao;
 import com.leilao.receita.federal.model.ProdutosPorLeilao;
@@ -10,13 +9,11 @@ import com.leilao.receita.federal.service.ExportacaoService;
 import com.leilao.receita.federal.service.FiltroService;
 import com.leilao.receita.federal.service.LeilaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -56,7 +53,7 @@ public class LeilaoController {
     public ResponseEntity<List<Informatica>> getInformaticas(@RequestParam(required = false) Double lanceMin,
                                                              @RequestParam(required = false) Double lanceMax,
                                                              @RequestParam(required = false) String nomeProduto) {
-        List<Informatica> informaticas = filtroService.filtrarInformaticas(lanceMin, lanceMax, nomeProduto);
+        List<Informatica> informaticas = filtroService.filtrarInformatica(lanceMin, lanceMax, nomeProduto);
         return ResponseEntity.ok(informaticas);
     }
 

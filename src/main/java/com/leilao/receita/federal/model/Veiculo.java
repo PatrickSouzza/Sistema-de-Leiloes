@@ -6,15 +6,8 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.persistence.*;
 
 @Entity
-public class Veiculo {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Schema(hidden = true)
-    private Long id;
-
-    @Schema(example = "Corola 2022")
-    private String nomeProduto;
+@DiscriminatorValue("VEICULO")
+public class Veiculo extends Produto {
 
     @Schema(example = "Toyota")
     private String marca;
@@ -55,21 +48,6 @@ public class Veiculo {
 
     private Double lanceVencedor;
 //////////////////////////////////////////////////////////////
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNomeProduto() {
-        return nomeProduto;
-    }
-
-    public void setNomeProduto(String nomeProduto) {
-        this.nomeProduto = nomeProduto;
-    }
 
     public String getMarca() {
         return marca;
